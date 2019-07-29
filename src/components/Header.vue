@@ -17,7 +17,7 @@ import ActivityIndicator from "mand-mobile/components/activity-indicator";
 
 export default {
     name: "Header",
-    props: ["updateStatus", "loading"],
+    props: ["loading"],
     components: {
         "md-activity-indicator": ActivityIndicator
     }

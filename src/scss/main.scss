@@ -1,3 +1,5 @@
+@import "./_variables.scss";
+
 body {
     background-color: #20221d;
     margin: 0;
@@ -5,7 +7,7 @@ body {
     color: rgba(255, 255, 255, .6);
     font-family: Raleway, Helvetica;
     min-height: 100vh;
-    background: radial-gradient(ellipse at center, rgba(181,118,153,1) 0%, rgba(59,31,71,1) 100%);
+    background: radial-gradient(ellipse at center, $bgLight 0%, $bgDark 100%);
 }
 
 .main-screen--indicator-num {
@@ -34,7 +36,7 @@ body {
 }
 
 .last-update {
-    background-color: rgba(59,31,71,1);
+    background-color: $bgDark;
     bottom: 0px;
     font-family: Nunito;
     font-size: 16px;
@@ -49,7 +51,7 @@ body {
     span {
         font-weight: 500;
     }
-    box-shadow: 0 -18px 18px rgba(59,31,71,1);
+    box-shadow: 0 -18px 18px $bgDark;
 }
 
 .graph-container {

@@ -2,7 +2,8 @@ import Vue from 'vue';
 import App from './App.vue';
 import Vuetify from 'vuetify';
 import Trend from "vuetrend";
-import FastClick from 'fastclick'
+import FastClick from 'fastclick';
+import VueRouter from 'vue-router'
 
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css';
@@ -21,17 +22,17 @@ if ('serviceWorker' in navigator) {
 
 if ('addEventListener' in document && 'ontouchstart' in window) {
     FastClick.prototype.focus = function (targetElement) {
-      targetElement.focus()
+        targetElement.focus()
     }
     document.addEventListener('DOMContentLoaded', function () {
-      FastClick.attach(document.body)
+        FastClick.attach(document.body)
     }, false)
-  }
-
-Vue.use(Trend);
+}
 
 Vue.config.productionTip = false;
 
+Vue.use(Trend);
+Vue.use(VueRouter)
 Vue.use(Vuetify, {
     iconfont: 'mdi',
     icons: {
