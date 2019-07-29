@@ -1,20 +1,35 @@
 {
-  "name": "growfy-app",
-  "short_name": "growfy-app",
+  "name": "Growfy",
+  "short_name": "Growfy",
   "icons": [
     {
-      "src": "./img/icons/android-chrome-192x192.png",
-      "sizes": "192x192",
+      "src": "./img/icons/android-256.png",
+      "sizes": "256x256",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/android-chrome-512x512.png",
+      "src": "./img/icons/android-120.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/android-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/android-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/apple-touch-icon-152x152.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#20221d",
-  "theme_color": "#20221d"
+  "background_color": "#3b1f47",
+  "theme_color": "#3b1f47"
 }

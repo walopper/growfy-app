@@ -1,0 +1,135 @@
+body {
+    background-color: #20221d;
+    margin: 0;
+    padding: 0;
+    color: rgba(255, 255, 255, .6);
+    font-family: Raleway, Helvetica;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, rgba(181,118,153,1) 0%, rgba(59,31,71,1) 100%);
+}
+
+.main-screen--indicator-num {
+    .number {
+        font-size: 40px;
+        color: #fff;
+        font-family: Righteous;
+        span {
+            font-size: 0.55em;
+            vertical-align: 13px;
+        }
+    }
+
+    .label {
+        font-family: Nunito;
+    }
+
+    &.humidity {
+        text-align: right;
+        padding-right: 5px;
+    }
+    &.temp {
+        text-align: left;
+        padding-left: 5px;
+    }
+}
+
+.last-update {
+    background-color: rgba(59,31,71,1);
+    bottom: 0px;
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 400;
+    height: 40px;
+    left: 0;
+    line-height: 40px;
+    position: fixed;
+    text-align: center;
+    width: 100vw;
+    z-index: 1;
+    span {
+        font-weight: 500;
+    }
+    box-shadow: 0 -18px 18px rgba(59,31,71,1);
+}
+
+.graph-container {
+    border-top: 2px dashed rgba(128, 128, 128, .3);
+    border-bottom: 2px dashed rgba(128, 128, 128, .3);
+    position: relative;
+    min-height: 150px;
+
+    .minmax {
+        position: absolute;
+        font-family: Nunito;
+        font-weight: 400 !important;
+        span {
+            font-size: 11px;
+        }
+    }
+
+    .min {
+        bottom: 8px;
+        left: 10px;
+    }
+
+    .max {
+        top: 3px;
+        left: 10px;
+    }
+
+    .avg {
+        right: 4px;
+    }
+    .first-date {
+        left: 10px;
+        bottom: -30px;
+        font-family: Nunito;
+        font-weight: 400 !important;
+        color: rgba(255, 208, 0, .8);
+        letter-spacing: 1.8px;
+        word-spacing: 8px;
+    }
+    .last-date {
+        right: 10px;
+        bottom: -30px;
+        color: rgba(255, 208, 0, .8);
+        letter-spacing: 1.8px;
+        word-spacing: 5px;
+    }
+}
+.label-temp {
+    text-align: right;
+    margin-top: 16px;
+    font-size: 24px;
+    padding-right: 5px;
+    font-family: Nunito;
+}
+
+.label-humidity {
+    text-align: left;
+    margin-top: 16px;
+    font-size: 24px;
+    padding-left: 5px;
+    font-family: Nunito;
+}
+
+.lapsed-container {
+    position: absolute;
+    bottom: 40px;
+    z-index: 2;
+    
+    .lapsed {
+        color: rgba(255, 255, 250, .4);
+        .number {
+            font-size: 28px;
+        }
+        .label {
+            font-size: 14px;
+        }
+    }
+}
+
+.md-activity-indicator {
+    display: flex;
+    justify-content: center;
+}

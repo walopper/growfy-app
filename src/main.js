@@ -1,10 +1,8 @@
 import Vue from 'vue';
 import App from './App.vue';
 import Vuetify from 'vuetify';
-import VueApexCharts from 'vue-apexcharts';
 import Trend from "vuetrend";
-import vuemoment from 'vue-moment';
-import VueSvgGauge from 'vue-svg-gauge';
+import FastClick from 'fastclick'
 
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css';
@@ -21,12 +19,16 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-Vue.use(Trend);
-Vue.use(vuemoment);
-Vue.use(VueSvgGauge);
-Vue.use(VueApexCharts);
+if ('addEventListener' in document && 'ontouchstart' in window) {
+    FastClick.prototype.focus = function (targetElement) {
+      targetElement.focus()
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      FastClick.attach(document.body)
+    }, false)
+  }
 
-Vue.component('apexchart', VueApexCharts);
+Vue.use(Trend);
 
 Vue.config.productionTip = false;
 
