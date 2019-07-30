@@ -133,7 +133,7 @@ const socket = io("https://gateway.growfy.pro:60440/app", function(algo) {
 // };
 
 export default {
-    name: "app",
+    name: "dashboard",
     components: {
         TempChart,
         "md-activity-indicator": ActivityIndicator
@@ -162,14 +162,14 @@ export default {
             tempColor: "#9ad657",
             humidityColor: "#2bbdef"
         },
-        lastUpdate: "-",
+        lastUpdate: false,
         loading: false,
         stats: []
     }),
     mounted: function() {
         this.updateStatus();
         setTimeout(this.updateStatus, 10000);
-        this.floweringStarted = moment();
+        this.floweringStarted = moment('2019-08-02');
     },
     methods: {
         windowWith() {
@@ -177,8 +177,8 @@ export default {
         },
         lastUpdateAgo() {
             return this.lastUpdate
-                ? moment(this.lastUpdate).format("ddd d MMM, HH:mm")
-                : "-";
+                ? moment(this.lastUpdate).format("D MMM, HH:mm")
+                : "actualizando";
         },
         tempMainLogs() {
             return Array.isArray(this.stats) && this.stats.map(l => l.temp);
@@ -246,7 +246,7 @@ export default {
         },
         growingTime() {
             return {
-                days: moment().diff(growStartDate, 'days'),
+                days: moment().diff(growStartDate, 'days') + 1,
                 weeks: moment().diff(growStartDate, 'weeks')
             }
         },

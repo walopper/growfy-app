@@ -8,7 +8,7 @@
 </template>
 <script>
 	export default{
-		props:['direction','exist'],
+		props:['direction', 'exist', 'onDrawerStatusChange'],
 		data(){
 			return {
 				auto_speed:'0.3s',
@@ -154,7 +154,8 @@
 	    		this.lock(document.querySelector('html'));
 	    		this.lock(document.querySelector('body'));
 				this.element.classList.add('active');	
-				this.active = true;	
+                this.active = true;	
+                this.onDrawerStatusChange();
 			},
 			close(){
 				if(this.direction=='left'){
@@ -168,7 +169,8 @@
 	    		this.unlock(document.querySelector('html'));
 	    		this.unlock(document.querySelector('body'));
 				this.element.classList.remove('active');	
-				this.active = false;
+                this.active = false;
+                this.onDrawerStatusChange();
 			},
 			speed(e){
 				let time = new Date().getTime() - this.startTime;

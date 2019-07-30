@@ -5,8 +5,12 @@ import Trend from "vuetrend";
 import FastClick from 'fastclick';
 import VueRouter from 'vue-router'
 
+import { Icon } from 'mand-mobile';
+import { ToggleButton } from 'vue-js-toggle-button';
+
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css';
+import 'mand-mobile/lib/mand-mobile.css';
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -41,6 +45,10 @@ Vue.use(Vuetify, {
         'menu': 'fas fa-ellipsis-v'
     }
 });
+ 
+Vue.component('ToggleButton', ToggleButton)
+
+Vue.component(Icon.name, Icon)
 
 new Vue({
     render: h => h(App),

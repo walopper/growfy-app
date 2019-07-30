@@ -8,6 +8,16 @@ body {
     font-family: Raleway, Helvetica;
     min-height: 100vh;
     background: radial-gradient(ellipse at center, $bgLight 0%, $bgDark 100%);
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.with-blur {
+    // transition: 250ms all ease;
+    transition: 500ms all;
+}
+.blurred {
+    filter: blur(4px);
 }
 
 .main-screen--indicator-num {

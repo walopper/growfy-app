@@ -1,32 +1,36 @@
 <template>
     <div id="app">
-        <Header :loading="false" />
-        <router-view class="view" foo="123"></router-view>
+        <Header :loading="false" :openDrawer="openDrawer" :class="'with-blur ' + blurredClass" />
+        <router-view :class="'view with-blur ' + blurredClass" foo="123"></router-view>
 
-        <Drawer :direction="'right'" :exist="true" ref="LeftDrawer">
-            <div class="drawer--container">
-                <div class="button">
+        <Drawer 
+            :direction="'right'" 
+            :exist="true" 
+            ref="Drawer" 
+            :onDrawerStatusChange="onDrawerStatusChange">
+            <div class="drawer--container" @click="closeDrawer()">
+                <div class="button profile">
                     <div class="profile-picture">
 
                     </div>
                     <div class="label profile">Perfil</div>
                 </div>
-                <div class="button">
-                    <md-icon name="time" size="lg"></md-icon>
+                <router-link class="button" @click="closeDrawer()" to="/">
+                    <md-icon class="time" name="time" size="lg"></md-icon>
                     <div class="label">Monitoreo</div>
-                </div>
-                <div class="button">
-                    <md-icon name="switch" size="lg"></md-icon>
+                </router-link>
+                <router-link class="button" @click="closeDrawer()" to="/control">
+                    <md-icon class="switch" name="switch" size="lg"></md-icon>
                     <div class="label">Control</div>
-                </div>
-                <div class="button">
-                    <md-icon name="camera" size="lg"></md-icon>
+                </router-link>
+                <router-link class="button" @click="closeDrawer()" to="/snapshot">
+                    <md-icon class="camera" name="camera" size="lg"></md-icon>
                     <div class="label">Snapshot</div>
-                </div>
-                <div class="button">
-                    <md-icon name="setting" size="lg"></md-icon>
+                </router-link>
+                <router-link class="button" @click="closeDrawer()" to="/config">
+                    <md-icon class="setting" name="setting" size="lg"></md-icon>
                     <div class="label">Configuración</div>
-                </div>
+                </router-link>
             </div>
         </Drawer>
     </div>
@@ -38,17 +42,17 @@ import VueRouter from 'vue-router';
 import Drawer from './components/Drawer';
 import Header from "./components/Header";
 import Dashboard from "./views/Dashboard";
-
-import { Icon } from 'mand-mobile'
+import Control from "./views/Control";
+import Snapshot from "./views/Snapshot";
 
 const router = new VueRouter({
     mode: 'history',
     base: __dirname,
     routes: [
         { path: '/', component: Dashboard }, // No props, no nothing
-        { path: '/config', component: Dashboard, props: true }, // Pass route.params to props
-        { path: '/static', component: Dashboard, props: { name: 'world' }}, // static values
-        { path: '/attrs', component: Dashboard, Dashboard: { name: 'attrs' }}
+        { path: '/control', component: Control, props: true }, // Pass route.params to props
+        { path: '/snapshot', component: Snapshot, props: { name: 'world' }}, // static values
+        // { path: '/config', component: Header, Dashboard: { name: 'attrs' }},
     ]
 })
 
@@ -59,23 +63,34 @@ export default {
         Dashboard,
         Header,
         Drawer,
-        [Icon.name]: Icon
+        Control,
     },
     data: () => ({
         menu: [
           { title: 'Configuracion', icon: 'dashboard' },
           { title: 'Snapshot', icon: 'question_answer' },
         ],
+        blurredClass: ''
     }),
     mounted: function() {
-        this.openMenu();
+        // this.openDrawer();
     },
     methods: {
-        openMenu(){
-            if(this.$refs.LeftDrawer.active){
-                this.$refs.LeftDrawer.close();					
+        closeDrawer() {
+            this.$refs.Drawer.close();					
+        },
+        onDrawerStatusChange() {
+            if(this.$refs && this.$refs.Drawer && this.$refs.Drawer.active) {
+                this.blurredClass = 'blurred';
+            } else {
+                this.blurredClass = '';
+            }
+        },
+        openDrawer(){
+            if(this.$refs.Drawer.active){
+                this.$refs.Drawer.close();					
             }else{
-                this.$refs.LeftDrawer.open();
+                this.$refs.Drawer.open();
             }
         }
     }

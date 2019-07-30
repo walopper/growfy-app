@@ -9,5 +9,9 @@ module.exports = {
 
             }
         },
+    },
+    pwa: {
+        themeColor: '#3b1f47',
+        name: 'growfy-app',
     }
 };
