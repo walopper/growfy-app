@@ -100,18 +100,14 @@
 <script>
 import axios from "axios";
 import moment from "moment";
-import io from "socket.io-client";
 import thresholds from "../config/thresholds";
+import socket from '../services/sio.service';
 
 import ActivityIndicator from "mand-mobile/components/activity-indicator";
 
 import TempChart from "../components/TempChart";
 
 const growStartDate = moment('2019-06-23');
-
-const socket = io("https://gateway.growfy.pro:60440/app", function(algo) {
-    console.log(algo);
-});
 
 // const reducePoints = (points, maxPoints) => {
 //     var puntos_x_tramo = Math.ceil(maxPoints / (points.length - 2));

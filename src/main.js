@@ -4,6 +4,7 @@ import Vuetify from 'vuetify';
 import Trend from "vuetrend";
 import FastClick from 'fastclick';
 import VueRouter from 'vue-router'
+import gallery from 'img-vuer'
 
 import { Icon } from 'mand-mobile';
 import { ToggleButton } from 'vue-js-toggle-button';
@@ -45,10 +46,17 @@ Vue.use(Vuetify, {
         'menu': 'fas fa-ellipsis-v'
     }
 });
- 
+
 Vue.component('ToggleButton', ToggleButton)
 
 Vue.component(Icon.name, Icon)
+
+Vue.use(gallery, {
+    swipeThreshold: 150, // default 100
+    isIndexShow: true, // show image index, default true
+    useCloseButton: false, // trigger gallery close with close button, default true
+    preload: true, // preload images in the same group, default true
+})
 
 new Vue({
     render: h => h(App),
